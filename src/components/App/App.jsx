@@ -25,7 +25,7 @@ export class App extends React.Component {
     });
   };
 
-  addContact = ({name, number}) => {
+  addContact = ({ name, number }) => {
     const found = this.state.contacts.findIndex(
       el => el.name.trim().toUpperCase() === name.trim().toUpperCase()
     );
@@ -48,10 +48,10 @@ export class App extends React.Component {
 
   handleDelete = evt => {
     const contactId = evt.currentTarget.parentNode.id;
-    const newContacts = this.state.contacts.filter(el => el.id !== contactId)
+    const newContacts = this.state.contacts.filter(el => el.id !== contactId);
     this.setState({
       contacts: newContacts,
-      filter: newContacts.length > 0? this.state.filter: ''
+      filter: newContacts.length > 0 ? this.state.filter : '',
     });
   };
 

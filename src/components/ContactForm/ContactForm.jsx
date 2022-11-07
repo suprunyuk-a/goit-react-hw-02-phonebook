@@ -8,7 +8,6 @@ import {
   Input,
   InputBar,
 } from '../App/App.styled';
-
 export class ContactForm extends React.Component {
   state = {
     name: '',

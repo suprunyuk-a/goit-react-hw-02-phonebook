@@ -12,7 +12,9 @@ export class ContactList extends React.Component {
           return (
             <ContactItem key={el.id} id={el.id}>
               <span>{el.name}</span>: <span>{el.number}</span>
-              <Button onClick={handleDelete} size={200}>delete</Button>
+              <Button onClick={handleDelete} size={200}>
+                delete
+              </Button>
             </ContactItem>
           );
         })}
@@ -20,7 +22,6 @@ export class ContactList extends React.Component {
     );
   }
 }
-
 ContactList.propTypes = {
   contactList: PropTypes.arrayOf(
     PropTypes.objectOf({
@@ -29,5 +30,5 @@ ContactList.propTypes = {
       number: PropTypes.string,
     })
   ),
-  handleDelete: PropTypes.func
+  handleDelete: PropTypes.func,
 };
