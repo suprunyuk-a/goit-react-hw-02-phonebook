@@ -26,10 +26,10 @@ export class App extends React.Component {
   };
 
   addContact = ({ name, number }) => {
-    const found = this.state.contacts.findIndex(
+    const found = this.state.contacts.find(
       el => el.name.trim().toUpperCase() === name.trim().toUpperCase()
     );
-    if (found >= 0) {
+    if (found) {
       this.toastAlert(`${name} already exists`);
       return false;
     }
@@ -61,6 +61,7 @@ export class App extends React.Component {
         el.name.toUpperCase().includes(this.state.filter.trim().toUpperCase())
       );
     }
+
     return this.state.contacts;
   };
 
@@ -81,23 +82,24 @@ export class App extends React.Component {
         />
 
         <h2>Contacts</h2>
+
         {this.state.contacts.length > 0 ? (
           <>
             <Filter
               filter={this.state.filter}
               handleFilter={this.handleChange}
             />
-            {this.getContacts().length > 0 ? (
-              <ContactList
-                contacts={this.getContacts()}
-                handleDelete={this.handleDelete}
-              />
-            ) : (
-              <p>{this.emptyFilterMsg}</p>
-            )}
           </>
         ) : (
           <p>{this.emptyMsg}</p>
+        )}
+        {this.getContacts().length > 0 ? (
+          <ContactList
+            contacts={this.getContacts()}
+            handleDelete={this.handleDelete}
+          />
+        ) : (
+          <p>{this.emptyFilterMsg}</p>
         )}
       </Container>
     );
